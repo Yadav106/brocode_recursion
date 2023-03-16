@@ -3,21 +3,29 @@ import Banner from './Banner'
 import CatalogNav from './CatalogNav'
 import Products from './Products'
 import axios from 'axios'
+import Cart from './Cart'
 
 const Catalog = () => {
 
   const [products, setProducts] = useState([]);
   const [searchText, setSearchText] = useState('')
   const [searched, setSearched] = useState(false)
+  const [wishlist, setWishlist] = useState([])
+  const [cart, showCart] = useState(false)
+
+  useEffect(() => {
+    console.log(wishlist);
+  }, [wishlist])
 
   async function getData(queryVal) {
     if(queryVal === '') return
+
     const options = {
       method: 'GET',
       url: 'https://real-time-amazon-data.p.rapidapi.com/search',
       params: {query: queryVal, country: 'US', category_id: 'aps', page: '1'},
       headers: {
-        'X-RapidAPI-Key': 'd18ec56039mshacc40450ffc158bp16040fjsn9d142a66a806',
+        'X-RapidAPI-Key': '59e141312amsh948cdf69fea542ep1ba074jsna9bcde4470ad',
         'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
       }
     };
@@ -35,11 +43,12 @@ const Catalog = () => {
 
   return (
     <div>
-      <CatalogNav searchText={searchText} setSearchText={setSearchText} getData={getData} setSearched={setSearched}/>
+      <CatalogNav searchText={searchText} setSearchText={setSearchText} getData={getData} setSearched={setSearched} searched={searched} wishlist={wishlist} showCart={showCart} cart={cart}/>
+      {cart && <Cart wishlist={wishlist} setWishlist={setWishlist}/>}
       {
         !searched ?
-        <Banner /> :
-        <Products products={products} />
+        <Banner getData={getData} setSearchText={setSearchText}/> :
+        <Products products={products} wishlist={wishlist} setWishlist={setWishlist}/>
       }
     </div>
   )

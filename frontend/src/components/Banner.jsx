@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import categories from './categories'
 
-const Banner = () => {
+const Banner = (props) => {
 
     const [category, setCategory] = useState(categories)
 
@@ -17,16 +17,21 @@ const Banner = () => {
                             flex-col
                             h-[350px]
                             w-[300px]
-                            bg-[#ff6c02]
+                            bg-[#23272A]
                             rounded-3xl
                             border-[2px]
                             border-black
                             hover:shadow-black
                             hover:shadow-2xl
                             cursor-pointer
-                        `}>
+                        `}
+                        onClick={() => {
+                            props.setSearchText(item.cat)
+                            props.getData(item.cat)
+                        }}
+                        >
                             <img src={item.img} className='h-[300px] w-[300px] object-cover rounded-t-3xl'/>
-                            <h1 className='text-2xl font-bold text-center text-black mt-[10px]'>{item.cat}</h1>
+                            <h1 className='text-2xl font-bold text-center text-white mt-[10px]'>{item.cat}</h1>
                         </div>
                     })
                 }

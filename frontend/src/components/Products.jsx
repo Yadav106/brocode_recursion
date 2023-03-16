@@ -1,5 +1,4 @@
 import React from 'react'
-import { AiFillStar } from 'react-icons/ai'
 import SingleProd from './SingleProd'
 
 const Products = (props) => {
@@ -14,7 +13,7 @@ const Products = (props) => {
     `}>
         {
             props.products.map(item => {
-                return <SingleProd item={item} key={item.product_title}/>
+                return <SingleProd item={item} key={item.product_title} wishlist={props.wishlist} setWishlist={props.setWishlist}/>
             }) 
         }
     </div>
