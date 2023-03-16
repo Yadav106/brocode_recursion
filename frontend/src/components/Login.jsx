@@ -1,12 +1,30 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
 import { Link } from 'react-router-dom'
-import Signup from './Signup'
 
 const Login = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [signup, setSignup] = useState(false)
+  const [checkPassword, setCheckPassword] = useState(false)
+
+  useEffect(() => {
+    async function getPass() {
+      // const options = {
+      //   method: 'GET',
+      //   url: 'http://localhost:8000/password?email=' + email,
+      // }
+
+      // let reply = await axios.request(options).catch((err) => console.log(err))
+      let reply = await axios.get('http://localhost:8000/password/'+ email).catch((err) => console.log(err))
+      console.log(reply)
+    }
+
+    console.log('running');
+
+    getPass()
+  }, [checkPassword])
 
   return (
     !signup && <div 
@@ -54,6 +72,7 @@ const Login = () => {
         font-bold
         text-lg
       `}
+        onClick={() => setCheckPassword(!checkPassword)}
       >
         Login
       </button>
