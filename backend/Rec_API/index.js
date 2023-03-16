@@ -1,8 +1,11 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 const app = express()
 const port = 8000;
+
+app.use(cors());
 
 // Connectiong to the database
 main().catch(err => console.log(err));
@@ -51,9 +54,9 @@ app.post('/create', async(req, res) => {
     }
 } )
 
-app.get('/password', async (req,res) => {
+app.get('/password/:email', async (req,res) => {
     try{
-        const dets = await user.findOne({email: req.body.email})
+        const dets = await user.findOne({email: req.params.email})
         res.status(200).send(dets.pass)
     }
     catch(err){
