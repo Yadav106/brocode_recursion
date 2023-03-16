@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { AiFillStar } from 'react-icons/ai'
 import { motion } from 'framer-motion'
+import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js'
 
 const CartProd = (props) => {
     return <div
@@ -65,7 +66,9 @@ const Cart = (props) => {
             </div>
             <div className='flex justify-around mt-[30px]'>
                 <button className='text-white border-white border-[1px] p-[10px] hover:bg-white hover:text-black'>
-                    Checkout
+                    <PayPalScriptProvider options={{"client-id": "test"}}>
+                        <PayPalButtons style={{layout: "horizontal", label: "pay"}}/>
+                    </PayPalScriptProvider>
                 </button>
                 <p className='text-white'>
                     ${
