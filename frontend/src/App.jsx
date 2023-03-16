@@ -1,11 +1,18 @@
 import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Login from "./components/Login";
+import Signup from './components/Signup';
 
 const App = () => {
 
   return (
-    <div className='text-red-400 text-center'>
-      Recursion 4.0
-    </div>
+    <BrowserRouter>
+      <div>App</div>
+      <Login />
+      <Routes>
+        <Route path='/signup' Component={Signup} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
