@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
 
 const Login = () => {
 
@@ -11,12 +10,6 @@ const Login = () => {
 
   useEffect(() => {
     async function getPass() {
-      // const options = {
-      //   method: 'GET',
-      //   url: 'http://localhost:8000/password?email=' + email,
-      // }
-
-      // let reply = await axios.request(options).catch((err) => console.log(err))
       let reply = await axios.get('http://localhost:8000/password/'+ email).catch((err) => console.log(err))
       console.log(reply)
     }
@@ -76,7 +69,6 @@ const Login = () => {
       >
         Login
       </button>
-      <Link to={'/signup'}>
       <button className={`
         w-[400px]
         h-[40px]
@@ -95,8 +87,6 @@ const Login = () => {
       >
         No Account? Sign-up here!
       </button>
-      </Link>
-
     </div>
     )
 }
