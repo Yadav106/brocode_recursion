@@ -1,15 +1,13 @@
 import React, {useState} from 'react'
-import { Link } from 'react-router-dom'
-import Signup from './Signup'
 
-const Login = () => {
+const Signup = () => {
 
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [signup, setSignup] = useState(false)
 
   return (
-    !signup && <div 
+    <div 
       className={`
         flex
         flex-col
@@ -23,6 +21,14 @@ const Login = () => {
         gap-[15px]
       `}
     >
+      <input value={name} type='text' onChange={(e) => setName(e.target.value)} placeholder='Name'
+        className={`
+          w-[400px]
+          h-[40px]
+          rounded-[20px]
+          px-5
+        `}
+      />
       <input value={email} type='email' onChange={(e) => setEmail(e.target.value)} placeholder='Email'
         className={`
         w-[400px]
@@ -42,7 +48,7 @@ const Login = () => {
       <button className={`
         w-[400px]
         h-[40px]
-        mt-[10px]
+        mt-[20px]
         rounded-[20px]
         bg-[#ff6c02]
         hover:border-2
@@ -55,31 +61,10 @@ const Login = () => {
         text-lg
       `}
       >
-        Login
+        Signup
       </button>
-      <Link to={'/signup'}>
-      <button className={`
-        w-[400px]
-        h-[40px]
-        rounded-[20px]
-        bg-[#ff6c02]
-        hover:border-2
-        hover:bg-white
-        hover:text-[#ff6c02]
-        hover:border-[#ff6c02]
-        transition
-        text-white
-        font-bold
-        text-lg
-      `}
-      onClick={() => setSignup(true)}
-      >
-        No Account? Sign-up here!
-      </button>
-      </Link>
-
     </div>
-    )
+  )
 }
 
-export default Login
+export default Signup
