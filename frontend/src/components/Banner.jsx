@@ -6,7 +6,7 @@ const Banner = () => {
     const [category, setCategory] = useState(categories)
 
     return (
-        <div>
+        <div className='mt-[75px]'>
             <img src='/banner.jpg' alt='banner' className='w-[100vw] h-[300px] object-cover' />
             <h1 className='text-4xl font-bold text-center mt-[20px]'>Shop for</h1>
             <div className='flex gap-[10px] justify-center mt-[20px]'>
