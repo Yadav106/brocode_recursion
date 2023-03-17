@@ -7,7 +7,7 @@ const Banner = (props) => {
 
     return (
         <div className='mt-[75px]'>
-            <img src='/banner.jpg' alt='banner' className='w-[100vw] h-[300px] object-cover' />
+            <img src='https://static.vecteezy.com/system/resources/previews/002/294/859/original/flash-sale-web-banner-design-e-commerce-online-shopping-header-or-footer-banner-free-vector.jpg' alt='banner' className='w-[100vw] h-[300px] object-cover' />
             <h1 className='text-4xl font-bold text-center mt-[20px]'>Shop for</h1>
             <div className='flex gap-[10px] justify-center mt-[20px]'>
                 {
