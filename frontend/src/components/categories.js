@@ -16,7 +16,7 @@ const categories = [
     },
     {
         id: 4,
-        cat: "Jewelry",
+        cat: "Jewellery",
         img: "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71nNiiL8fHL._UL1500_.jpg"
     }
 ]
