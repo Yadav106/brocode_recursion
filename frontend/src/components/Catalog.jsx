@@ -47,7 +47,10 @@ const Catalog = () => {
       {cart && <Cart wishlist={wishlist} setWishlist={setWishlist}/>}
       {
         !searched ?
-        <Banner getData={getData} setSearchText={setSearchText}/> :
+        <div>
+          <Banner getData={getData} setSearchText={setSearchText}/>
+          <Products products={products} wishlist={wishlist} setWishlist={setWishlist}/>
+        </div> :
         <Products products={products} wishlist={wishlist} setWishlist={setWishlist}/>
       }
     </div>
